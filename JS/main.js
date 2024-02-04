@@ -1,4 +1,8 @@
-$(document).ready(function () {
+// $(document).ready(function () {
+//   $(".loader").fadeOut(800);
+// });
+
+window.addEventListener("load", function () {
   $(".loader").fadeOut(800);
 });
 
@@ -27,41 +31,47 @@ $(".open-close-icon").click(function () {
 let movieArray = [];
 
 async function getMovies(topic) {
+  const baseUrl = "https://api.themoviedb.org/3/";
+  const path = topic === "trending" ? `${topic}/movie/day` : `movie/${topic}`;
   let response = await fetch(
-    `https://api.themoviedb.org/3/movie/${topic}?api_key=bd0cab21adde295a77f50d6ba0a4dafc`
+    `${baseUrl}${path}?api_key=bd0cab21adde295a77f50d6ba0a4dafc`
   );
   if (response.status == 200) {
     let responseData = await response.json();
     movieArray = responseData.results;
-    console.log(movieArray);
-
     display();
   }
 }
 
 getMovies("now_playing");
 
-
 function display() {
   let totalHtml = "";
 
   for (let i = 0; i < movieArray.length; i++) {
-
     // toFixed() method Returns a String containing this Number value represented in decimal fixed-point notation with fractionDigits digits after the decimal point. If fractionDigits is undefined, 0 is assumed. Specifically, perform the following steps:
 
     totalHtml += `<div class=" col-lg-4  ">
 
         <div class=" position-relative">
-            <img src="https://image.tmdb.org/t/p/original${movieArray[i].poster_path}"  class=" h-100 w-100 rounded" alt="film poster"/>
+            <img src="https://image.tmdb.org/t/p/original${
+              movieArray[i].poster_path
+            }"  class=" h-100 w-100 rounded" alt="film poster"/>
 
 
             <div class=" overlay text-white position-absolute top-0 bottom-0 p-4 h-100 d-flex flex-column justify-content-evenly movie-details ">
-                <h3 class=" fw-bolder fs-3 text-center">${movieArray[i].title}</h3>
+                <h3 class=" fw-bolder fs-3 text-center">${
+                  movieArray[i].title
+                }</h3>
                 <p class="">${movieArray[i].overview}</p>
-                <h4 class=" fs-5 ">Release Date: ${movieArray[i].release_date}</h4>
+                <h4 class=" fs-5 ">Release Date: ${
+                  movieArray[i].release_date
+                }</h4>
                 <div class="rating">
                     ${getStars(movieArray[i].vote_average)}
-                    <div class=" rating-number border border-2 border-success rounded-circle d-flex justify-content-center align-items-center mt-2"><span class=" fs-4">${movieArray[i].vote_average.toFixed(1)}</span></div>    
+                    <div class=" rating-number border border-2 border-success rounded-circle d-flex justify-content-center align-items-center mt-2"><span class=" fs-4">${movieArray[
+                      i
+                    ].vote_average.toFixed(1)}</span></div>    
                 </div>
             </div>
 
@@ -82,21 +92,15 @@ $('.nav-links a[href^="#"]').click(function (e) {
   goToUp();
 });
 
-
-
 // when click on contact link, it should take you to the contacts section
 
-$( '.contacts' ).click( function(e){
+$(".contacts").click(function (e) {
+  e.preventDefault(); // Prevent the default anchor behavior (i.e., navigating to a new page)
 
-    e.preventDefault(); // Prevent the default anchor behavior (i.e., navigating to a new page)
+  const contactOffsetTop = $(".contacts-div").offset().top;
 
-    const contactOffsetTop = $('.contacts-div').offset().top;
-
-    $( 'html , body' ).animate( { scrollTop : contactOffsetTop } , 2000 );
-
-} );
-
-
+  $("html , body").animate({ scrollTop: contactOffsetTop }, 2000);
+});
 
 function goToUp() {
   $("html , body").animate({ scrollTop: 0 }, 1500);
@@ -147,60 +151,54 @@ async function searchMovie(movie) {
   }
 }
 
-
 // function that return string consists of number of stars for every movie
 
-function getStars(value){
+function getStars(value) {
+  let stars = "";
 
-    let stars = "";
-
-    if( value <= 1 ){
-        stars += `<i class="fa-solid fa-star text-muted fs-6"></i>`;
-    }else if( value <= 2 ){
-        stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
-    }else if( value < 3 ){
-        stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`
-    }else if( value <= 4 ){
-        for (let i = 0; i < 1; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-        }
-        stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
-    }else if( value <= 5 ){
-        for (let i = 0; i < 2; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-            }
-    }else if( value <= 6 ){
-        for (let i = 0; i < 2; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-            }
-        stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
-    }else if( value <= 7 ){
-        for (let i = 0; i < 3; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-            }
-   
-    }else if( value <= 8 ){
-        for (let i = 0; i < 3; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-            }
-        stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
-    }else if( value <= 9 ){
-
-        for (let i = 0; i < 4; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-            } 
-    }else if( value < 10 ){
-        for (let i = 0; i < 4; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-            }
-        stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
-    }else{
-        for (let i = 0; i < 5; i++) {
-            stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
-            }
+  if (value <= 1) {
+    stars += `<i class="fa-solid fa-star text-muted fs-6"></i>`;
+  } else if (value <= 2) {
+    stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
+  } else if (value < 3) {
+    stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+  } else if (value <= 4) {
+    for (let i = 0; i < 1; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
     }
+    stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
+  } else if (value <= 5) {
+    for (let i = 0; i < 2; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+    }
+  } else if (value <= 6) {
+    for (let i = 0; i < 2; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+    }
+    stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
+  } else if (value <= 7) {
+    for (let i = 0; i < 3; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+    }
+  } else if (value <= 8) {
+    for (let i = 0; i < 3; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+    }
+    stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
+  } else if (value <= 9) {
+    for (let i = 0; i < 4; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+    }
+  } else if (value < 10) {
+    for (let i = 0; i < 4; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+    }
+    stars += `<i class="fa-regular fa-star-half-stroke text-warning fs-6"></i>`;
+  } else {
+    for (let i = 0; i < 5; i++) {
+      stars += `<i class="fa-solid fa-star text-warning fs-6"></i>`;
+    }
+  }
 
-
-    return stars;
-    
+  return stars;
 }

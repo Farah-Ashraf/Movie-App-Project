@@ -93,26 +93,19 @@ $('#age').keyup( function(){
 } );
 
 
+const passwordInput = $('#password');
 $('#password').keyup( function(){
 
-    $('.pass-input i').css('display', 'block');
-
-    $('.pass-input i').click(function() {
-        const passwordInput = $('#password');
-
-        if (passwordInput.attr('type') === 'password') {
-            passwordInput.attr('type', 'text');
-            $('.pass-input i').removeClass('fa-eye-slash').addClass('fa-eye');
-        } else {
-            passwordInput.attr('type', 'password');
-            $('.pass-input i').removeClass('fa-eye').addClass('fa-eye-slash');
-        }
-    });
+    if(passwordInput.val()) {
+        $('.pass-input i').css('display', 'block');
+    } else {
+        $('.pass-input i').css('display', 'none');
+    }
 
     // regex of the pass input
 
     const passwordRegex =   /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if( passwordRegex.test( $('#password').val() ) == false ){
+    if( !passwordRegex.test( $('#password').val() ) ){
 
         showError($(this).next());
     }
@@ -127,6 +120,16 @@ $('#password').keyup( function(){
     }
 } );
 
+
+$('.pass-input i').click(function() {
+    if (passwordInput.attr('type') === 'password') {
+        passwordInput.attr('type', 'text');
+        $('.pass-input i').removeClass('fa-eye-slash').addClass('fa-eye');
+    } else {
+        passwordInput.attr('type', 'password');
+        $('.pass-input i').removeClass('fa-eye').addClass('fa-eye-slash');
+    }
+});
 
 $('#repassword').keyup( function(){
 
