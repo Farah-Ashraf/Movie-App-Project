@@ -1,0 +1,126 @@
+body{
+    /* overflow: hidden; */
+    background-color: rgb(13, 13, 13);
+    }
+/* ---------------------loading icon------------------------------ */
+.loader{
+    display: flex;
+    z-index: 999999;
+}
+
+.loader-icon{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-top: 3px solid white;
+    border-left: 3px solid black;
+    border-radius: 50%;
+    animation-duration: 1s;
+    /* animation: rotation 1s linear infinite ; */
+}
+/* another way instead of fa-spin class using fontawsome */
+/* @keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+} */
+/* ------------------------------------------------------------------ */
+
+.nav-links a:hover{
+
+    color: red !important;
+}
+
+nav{
+    left: 0px;
+    display: flex;
+}
+
+.fa-xmark{
+    cursor: pointer;
+}
+
+/* ----------------------------------------------------------------------- */
+
+.rating-number{
+    width: 50px;
+    height: 50px;
+}
+
+.overlay{
+    backdrop-filter: blur(3px);
+    background-color: rgba(0,0,0,0.5);
+
+}
+/* ////------------------------------------------------------------ */
+
+
+.go-to-up{
+
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.form-inputs input{
+
+    border-bottom: 1px solid white !important;
+    border-radius: 0px;
+    
+}
+
+.form-inputs input::placeholder{
+    text-align: center;
+    color: gray;
+    font-size: 18px;
+}
+
+.submit-button button:hover{
+    background-color: white !important;
+    color: black !important;
+}
+.alert-msg{
+    visibility: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.pass-input i{
+    transform: translateY(-100%);
+    display: none;
+}
+
+.search-input i{
+    transform: translateX(-250%);
+    visibility: hidden;
+    
+}
+
+/* -----------------------overly animation---------------------------*/
+.movie-details {
+    opacity: 0;
+}
+
+.movie-details:hover {
+    opacity: 1;
+}
+
+.movie-details:hover > * {
+    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+}

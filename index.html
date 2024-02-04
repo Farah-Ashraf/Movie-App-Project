@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Movie App" name="description" />
+    <meta
+      content="movie,movies,trending,popular,running,current,films"
+      name="keywords"
+    />
+    <title>Movie App</title>
+    <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+
+  
+  <body class="position-relative">
+    <!-- loading div -->
+    <div
+      class="loader justify-content-center align-items-center bg-black fixed-top bottom-0"
+    >
+      <span class="loader-icon fa-spin"></span>
+    </div>
+
+    <!-- whole side nav -->
+    <div class="all-nav d-flex position-fixed top-0 bottom-0 z-3">
+      <nav class="side-nav bg-black p-4 position-relative">
+        <div class="d-flex flex-column justify-content-between">
+          <div class="nav-links d-flex flex-column h-50 overflow-hidden">
+            <a
+              class="text-white text-decoration-none mt-3 fs-5 fw-light"
+              name="now_playing"
+              href="#"
+              >Now Playing</a
+            >
+            <a
+              class="text-white text-decoration-none mt-3 fs-5 fw-light"
+              name="popular"
+              href="#"
+              >Popular</a
+            >
+            <a
+              class="text-white text-decoration-none mt-3 fs-5 fw-light"
+              name="top_rated"
+              href="#"
+              >Top Rated</a
+            >
+            <a
+              class="text-white text-decoration-none mt-3 fs-5 fw-light"
+              name="trending"
+              href="#"
+              >Trending</a
+            >
+            <a
+              class="text-white text-decoration-none mt-3 fs-5 fw-light"
+              name="upcoming"
+              href="#"
+              >Upcoming</a
+            >
+            <a
+              class="text-white text-decoration-none mt-3 fs-5 fw-light contacts"
+              href=""
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="nav-social-links text-white">
+            <i class="fa-brands fa-facebook-f me-3 mb-4 fs-5 ps-3"></i>
+            <i class="fa-brands fa-twitter me-3 mb-4 fs-5"></i>
+            <i class="fa-solid fa-globe me-3 mb-4 fs-5"></i>
+            <p class="text-white fw-lighter">
+              Copyright 2022 All Rights Reserved <br />
+              Created by <span class="text-danger">Farah Ashraf</span>
+            </p>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        class="tool-nav text-center pt-4 pb-4 bg-white d-flex flex-column justify-content-between"
+      >
+        <div>
+          <img src="./Images/logo.png" class="w-50" alt="Logo" />
+        </div>
+
+        <div class="open-close-icon fs-3">
+          <i class="fa-solid fa-xmark fs-3"></i>
+        </div>
+
+        <div>
+          <i class="fa-solid fa-globe d-block mb-3"></i>
+          <i class="fa-solid fa-share-nodes"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- input and content div -->
+    <section class="container mt-5">
+      <div class="w-100 text-center search-input">
+        <input
+          type="text"
+          placeholder="Search"
+          class="border border-3 text-white border-white bg-black w-50 rounded-pill p-2 px-4"
+        />
+        <i class="fa-solid fa-xmark fs-5 text-white"></i>
+      </div>
+
+      <!-- content div -->
+      <div class="row movies-row mt-5 gy-5 gx-5">
+        <!-- <div class=" col-lg-4 col-md-6 ">  
+
+                <div class=" position-relative card-content">
+                    <img src="./Images/s-l1200.webp" class=" w-100 rounded" alt="film poster"/>
+
+                    <div class=" overlay text-white position-absolute top-0 bottom-0 p-4 d-flex flex-column justify-content-evenly">
+
+                        <h3 class=" fw-bolder fs-3 text-center">The Last Of Us</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptas eius esse reprehenderit tempora recusandae?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ipsa earum modi facere iste dolore.</p>
+                        <h4 class=" fs-5">Release Date: 2023-12-30</h4>
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <div class=" rating-number border border-2 border-success rounded-circle d-flex justify-content-center align-items-center mt-2"><span class=" fs-4">7.0</span></div>
+
+                        </div>
+    
+                    </div>
+    
+                </div>
+
+
+
+            </div>  -->
+      </div>
+
+      <!-- contact div -->
+      <div class="my-5 py-5 contacts-div">
+        <h3 class="text-white mb-4">Contact Us</h3>
+
+        <form class="form-inputs">
+          <div class="row gx-5">
+            <div class="col-md-6 name-input">
+              <input
+                type="text"
+                placeholder="Enter Your Name"
+                id="name"
+                required
+                class="form-control bg-transparent border border-0 text-white shadow-none"
+              />
+              <span class="alert-msg text-danger fs-6"
+                >Name contain letters only & maximum 30 character</span
+              >
+            </div>
+
+            <div class="col-md-6 email-input">
+              <input
+                type="email"
+                placeholder="Enter Your Email"
+                id="email"
+                required
+                class="form-control bg-transparent border border-0 text-white shadow-none"
+              />
+              <span class="alert-msg text-danger fs-6"
+                >Invalid Email, try example@domain.com</span
+              >
+            </div>
+
+            <div class="col-md-6 phone-input">
+              <input
+                type="number"
+                placeholder="Enter Your Phone"
+                id="phone"
+                required
+                class="form-control bg-transparent border border-0 text-white shadow-none"
+              />
+              <span class="alert-msg text-danger fs-6"
+                >Invalid Phone Number</span
+              >
+            </div>
+
+            <div class="col-md-6 age-input">
+              <input
+                type="number"
+                placeholder="Enter Your Age"
+                id="age"
+                required
+                class="form-control bg-transparent border border-0 text-white shadow-none"
+              />
+              <span class="alert-msg text-danger fs-6"
+                >Your age must be over 16+</span
+              >
+            </div>
+
+            <div class="col-md-6 pass-input position-relative">
+              <input
+                type="password"
+                placeholder="Enter Your Password"
+                id="password"
+                required
+                class="form-control bg-transparent border border-0 text-white shadow-none"
+              />
+              <i
+                class="fa-regular fa-eye-slash fs-4 position-absolute end-0 me-5 pb-2 text-white"
+              ></i>
+              <span class="alert-msg text-danger fs-6"
+                >Password must contain numbers & letters at least 8
+                characters</span
+              >
+            </div>
+
+            <div class="col-md-6 repass-input">
+              <input
+                type="password"
+                placeholder="ReEnter Your Password"
+                id="repassword"
+                required
+                class="form-control bg-transparent border border-0 text-white shadow-none"
+              />
+              <span class="alert-msg text-danger fs-6">Password not match</span>
+            </div>
+
+            <div class="col-md-12 submit-button">
+              <button
+                type="submit"
+                class="border border-0 py-3 px-5 rounded bg-black text-white shadow-none"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- go to up button -->
+    <div class="go-to-up bg-black">
+      <i class="fa-solid fa-arrow-up text-white fs-4"></i>
+    </div>
+
+    <script src="./JS/jquery-3.7.1.min.js"></script>
+    <script src="./JS/bootstrap.bundle.min.js"></script>
+    <script src="./JS/regex.js"></script>
+    <script src="./JS/main.js"></script>
+  </body>
+</html>
